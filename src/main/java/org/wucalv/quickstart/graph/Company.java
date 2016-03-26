@@ -1,13 +1,14 @@
 package org.wucalv.quickstart.graph;
 
 /**
- * Created by calvin.wu on 2/29/16.
+ * Created by wucalv on 3/13/16.
  */
-public class Individual extends Vertex {
+public class Company extends Vertex {
 
     private String name;
 
-    public Individual(String name) {
+    public Company(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -17,7 +18,7 @@ public class Individual extends Vertex {
 
     @Override
     public String toString() {
-        return "Individual{" +
+        return "Company{" +
                 "name='" + name + '\'' +
                 '}';
     }
