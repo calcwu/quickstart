@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Created by calvin.wu on 2/29/16.
  */
-public class FinancialGraph {
+public class Graph {
 
     private Map<Vertex, Set<Vertex>> verticesMap = new HashMap<>();
 
