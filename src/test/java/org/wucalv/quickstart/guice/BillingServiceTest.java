@@ -2,14 +2,14 @@ package org.wucalv.quickstart.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.wucalv.quickstart.guice.model.BillService;
 import org.wucalv.quickstart.guice.model.MySqlDatabaseTransactionLog;
 import org.wucalv.quickstart.guice.model.TransactionLog;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by calvin.wu on 3/1/16.
@@ -18,10 +18,11 @@ public class BillingServiceTest {
 
     Injector injector;
 
-    @Before
+    @BeforeMethod
     public void setup() {
         injector = Guice.createInjector(new BillingModule());
     }
+
     @Test
     public void test() {
         BillService service = injector.getInstance(BillService.class);

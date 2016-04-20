@@ -6,10 +6,10 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.wucalv.quickstart.guice.model.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by calvin.wu on 3/1/16.

@@ -1,7 +1,7 @@
 package org.wucalv.quickstart.graph;
 
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.Set;
 
