@@ -8,17 +8,28 @@ import java.io.InputStreamReader;
 /**
  * @author Calvin Wu (calvin.wu@addepar.com)
  */
-public class DataParser {
+public class ReconCacheBuilder {
 
+    private final ReconCache reconCache;
+
+    private ReconCacheBuilder(ReconCache dataCache) {
+        this.reconCache = dataCache;
+    }
 
     public void parse(InputStream is) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             reader.lines()
                 .map(line -> line.trim())
                 .filter(line -> !line.isEmpty())
-                .forEach(line -> {
-                    System.out.println(line);
-                });
+                .forEach(line -> reconCache.add(new Entry.TextEntry(line)));
         }
+    }
+
+    public ReconCache getReconCache() {
+        return reconCache;
+    }
+
+    public static ReconCacheBuilder fileBase() {
+        return new ReconCacheBuilder(new ReconFileCacheImpl());
     }
 }

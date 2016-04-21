@@ -8,13 +8,13 @@ import java.io.InputStream;
 /**
  * @author Calvin Wu (calvin.wu@addepar.com)
  */
-public class DataParserTest {
+public class FullReconTest {
 
     @Test
     public void test() throws IOException {
 
-        DataParser dataParser = new DataParser();
+        ReconCacheBuilder reconCacheBuilder = ReconCacheBuilder.fileBase();
         InputStream in = ClassLoader.getSystemResourceAsStream("fullrecon.in");
-        dataParser.parse(in);
+        reconCacheBuilder.parse(in);
     }
 }
