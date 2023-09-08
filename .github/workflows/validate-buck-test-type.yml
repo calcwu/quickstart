@@ -7,7 +7,7 @@ on:
       - 'master'
 jobs:
   validate-new-buck-module:
-    name: Validate new BUCK file
+    name: Validate BUCK test_type
     runs-on: ubuntu-latest
     steps:
       - name: Check out branch
@@ -24,7 +24,7 @@ jobs:
           
           for changed_file in "${changed_files[@]}"; do
             if [[ "${changed_file}" == *"BUCK" ]]; then
-              if grep -q "java_test_internal" "${changed_file}" && grep -q "test_type='junit'" "${changed_file}"; then
+              if grep -q "java_test_internal" "${changed_file}" && grep -q "test_type = \"junit\"" "${changed_file}"; then
                   echo "${changed_file} is valid."
               else
                   echo "Set ${changed_file}'s java_test_internal.test_type='junit' fix this build failure."
