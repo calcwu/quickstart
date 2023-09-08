@@ -1,0 +1,18 @@
+# This action enforces test_type = 'junit' for new buck modules.
+# https://addepar.atlassian.net/l/cp/06UDkB1o
+
+name: Buck Module Test Type Validation
+on:
+  pull_request:
+    branches:
+      - 'master'
+jobs:
+  validate-new-buck-module:
+    name: Validate new BUCK file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v3
+      - name: check new added files
+        run: |
+            echo "testing...."
