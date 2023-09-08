@@ -23,5 +23,14 @@ jobs:
           echo "${changed_files[@]}"
           
           for changed_file in "${changed_files[@]}"; do
-            echo "Do something with this ${changed_file}."
+            if [[ "${changed_file}" == *"BUCK" ]]; then
+              if grep -q "java_test_internal" "{$changed_file}" && grep -q "test_type='junit'" "${changed_file}"; then
+                  echo "${changed_file} is valid."
+              else
+                  echo "Set ${changed_file}'s test_type=`junit`."
+                  exit 1
+              fi          
+            else
+             echo "Skipped validating ${changed_file}."         
+            fi          
           done
