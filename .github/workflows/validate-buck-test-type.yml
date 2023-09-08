@@ -12,8 +12,12 @@ jobs:
     steps:
       - name: Check out branch
         uses: actions/checkout@v3
+
+      - name: Get changed files
+        id: get_changed_files
+        uses: Ana06/get-changed-files@v2.1.0
+
       - name: Validate new buck file
         run: |
-          git fetch origin master
-          git diff --name-status origin/master ${{ github.event.pull_request.head.sha }} | grep '^A' | grep BUCK | awk '{print $2}' > buck_files.txt
-          echo "$(cat buck_files.txt)"
+          changed_files=(${{ steps.get_changed_files.outputs.all }})
+          echo "${changed_files}"
