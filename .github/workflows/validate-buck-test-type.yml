@@ -20,11 +20,11 @@ jobs:
       - name: Validate new buck file
         run: |
           changed_files=(${{ steps.get_changed_files.outputs.added }})
-          echo "${changed_files[@]}"
+          echo "Validating ${changed_files[@]}"
           
           for changed_file in "${changed_files[@]}"; do
             if [[ "${changed_file}" == *"BUCK" ]]; then
-              if grep -q "java_test_internal" "{$changed_file}" && grep -q "test_type='junit'" "${changed_file}"; then
+              if grep -q "java_test_internal" "${changed_file}" && grep -q "test_type='junit'" "${changed_file}"; then
                   echo "${changed_file} is valid."
               else
                   echo "Set ${changed_file}'s test_type='junit'."
