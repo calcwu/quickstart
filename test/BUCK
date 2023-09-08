@@ -1,7 +1,6 @@
 
 java_test_internal(
     deps = DEPS + TEST_DEPS,
-    test_type = "junit",
 )
 
 static_analysis(DEPS + TEST_DEPS)
