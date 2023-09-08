@@ -19,5 +19,5 @@ jobs:
 
       - name: Validate new buck file
         run: |
-          changed_files=(${{ steps.get_changed_files.outputs.all }})
+          changed_files=(${{ steps.get_changed_files.outputs.added }})
           echo "${changed_files}"
