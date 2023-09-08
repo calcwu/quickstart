@@ -12,15 +12,8 @@ jobs:
     steps:
       - name: Check out branch
         uses: actions/checkout@v3
-      - name: Fetch new changed files
-        id: buck_files
+      - name: Validate new buck file
         run: |
           git fetch origin master
           git diff --name-status origin/master ${{ github.event.pull_request.head.sha }} | grep '^A' | grep BUCK | awk '{print $2}' > buck_files.txt
-          echo "::set-output name=buck_files::$(cat buck_files.txt)"
-
-      - name: Validate new file
-        run: |
-          changed_files="${{ steps.buck_files.outputs.buck_files }}"
-          echo "Changed Files:"
-          echo "$changed_files"
+          echo "$(cat buck_files.txt)"
