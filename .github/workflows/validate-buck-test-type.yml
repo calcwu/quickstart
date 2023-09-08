@@ -1,6 +1,3 @@
-# This action enforces test_type = 'junit' for new buck modules.
-# https://addepar.atlassian.net/l/cp/06UDkB1o
-
 name: Buck Module Test Type Validation
 on:
   pull_request:
